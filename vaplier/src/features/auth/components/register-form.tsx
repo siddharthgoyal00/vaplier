@@ -88,10 +88,10 @@ export function RegisterForm(){
                          <div className = "grid gap-6">
                             <div className="flex flex-col gap-4">
                                 <Button variant ="outline" className="w-full" type ="button" disabled = {isPending}>
-                                   continue with GitHub
+                                  <Image src="/logos/github.svg" alt="github" width={20} height={20} /> continue with GitHub
                                 </Button>
                                  <Button variant ="outline" className="w-full" type ="button" disabled = {isPending}>
-                                   continue with Google
+                                   <Image src="/logos/google.svg" alt="google" width={20} height={20} /> continue with Google
                                 </Button>
                             </div>
                             <div className ="grid gap-6">
