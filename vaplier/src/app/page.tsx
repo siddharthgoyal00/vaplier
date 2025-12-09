@@ -7,27 +7,31 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 
 
-const Page =  ()=>{
-   const trpc = useTRPC()
-   const queryClient = useQueryClient()
-   const {data} =  useQuery(trpc.getWorkflows.queryOptions())
-   const create = useMutation(trpc.createWorkflow.mutationOptions({
-       onSuccess:()=>{
-           toast.success("job queued")
-       }
-   }))
+const Page = () => {
+  const trpc = useTRPC()
+  const queryClient = useQueryClient()
+  const { data } = useQuery(trpc.getWorkflows.queryOptions())
+  const testAi = useMutation(trpc.testAi.mutationOptions())
+  const create = useMutation(trpc.createWorkflow.mutationOptions({
+    onSuccess: () => {
+      toast.success("job queued")
+    }
+  }))
   return (
     <div className="text-red-700 flex-col gap-y-6justify-center items-center flex min-w-screen min-h-screen">
-    protected server component 
-   <div>
-    {JSON.stringify(data,null,2)}
-   </div>
-   <Button disabled={create.isPending} onClick={()=>create.mutate()}>
-    Create Workflow
-   </Button>
-   <LogoutButton/>
+      protected server component
+      <div>
+        {JSON.stringify(data, null, 2)}
+      </div>
+      <Button disabled={testAi.isPending} onClick={() => testAi.mutate()}>
+        Test AI
+      </Button>
+      <Button disabled={create.isPending} onClick={() => create.mutate()}>
+        Create Workflow
+      </Button>
+      <LogoutButton />
     </div>
   )
- };
+};
 
- export default Page ;
+export default Page;
